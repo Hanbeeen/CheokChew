@@ -147,9 +147,9 @@
                 // 모바일(iOS 등) 엄격한 보안 정책: 사용자 클릭(터치) 함수 내에서 처음 AudioContext를 생성해야만 소리가 차단되지 않음
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-                // iOS Audio Unlock (동기적 문맥 내에서 컨텍스트 강제 활성화)
+                // iOS Audio Unlock (동기적 문맥 내에서 컨텍스트 강제 활성화, await 금지)
                 if (audioCtx.state === 'suspended') {
-                    await audioCtx.resume();
+                    audioCtx.resume();
                 }
                 const unlockOsc = audioCtx.createOscillator();
                 const unlockGain = audioCtx.createGain();
@@ -503,9 +503,7 @@
                             document.body.requestFullscreen().catch(() => { }
                             );
                         }
-                        // 모바일 등 미디어 자동재생 제한 해제를 위해 더미 오디오 재생
-                        new Audio('cheok.mp3').play().then(a => a.pause()).catch(() => { }
-                        );
+                        // 모바일 호환성 (레거시 코드 제거)
                         renderLoop();
                     } catch (e) {
                         alert("렌더링루프 진입 오류: " + e.message);
