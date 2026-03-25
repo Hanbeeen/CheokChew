@@ -1,5 +1,7 @@
 # Cheok-Chew (척추 밈 제스처 인식기) 척·츄
 
+# https://hanbeeen.github.io/CheokChew/
+
 ## 🚀 프로젝트 개요 (Overview)
 
 **Cheok-Chew**는 브라우저 웹캠으로 사용자의 **주먹(Fist)** 제스처를 실시간으로 인식하여 양손에 각각 '척!', '츄!' 텍스트와 음향 효과를 출력하는 인터랙티브 웹 장난감 프로젝트입니다. 
